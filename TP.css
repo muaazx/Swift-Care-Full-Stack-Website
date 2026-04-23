@@ -1,4 +1,6 @@
-﻿/* ===== COLOR VARIABLES ===== */
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700;800&display=swap');
+
+/* ===== COLOR VARIABLES ===== */
 :root {
     --dark-main: #13b196;
     --dark-secondary: #06332E;
@@ -22,10 +24,51 @@
 }
 
 body {
-    font-family: "Inter", "Segoe UI", sans-serif;
+    font-family: 'Outfit', "Inter", "Segoe UI", sans-serif;
     background: var(--BACKGROUNDCOLOR);
     color: #0B4F47;
     transition: all 0.3s ease;
+}
+
+/* GLOBAL HEADING STYLE */
+h1, h2, h3, h4, h5, h6 {
+    color: white !important;
+    font-family: 'Outfit', sans-serif !important;
+}
+
+/* SECTION IMAGES */
+.section-image-box {
+    width: 100%;
+    margin-bottom: 30px;
+}
+
+.heading-with-image {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    margin-bottom: 30px;
+}
+
+.heading-with-image h2 {
+    margin-bottom: 0 !important;
+}
+
+.heading-with-image img {
+    max-width: 300px; /* Adjusted for high-res images */
+    height: auto;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(29, 255, 217, 0.15);
+}
+
+@media (max-width: 768px) {
+    .heading-with-image {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+    }
+    .heading-with-image img {
+        max-width: 100%;
+    }
 }
 
     /* LOCK SCROLL */
@@ -422,11 +465,38 @@ body {
 /* HERO IMAGE SECTION */
 .hero-image {
     position: relative;
-    height: 50vh; /* HALF SCREEN */
-    background: url('https://abacus-global.com/wp-content/uploads/2025/11/Research-And-Analysis-1.jpg') center/cover no-repeat;
+    width: 1260px;
+    height: 400px;
+    margin: 80px auto 0 auto; /* Centered with space for navbar */
     display: flex;
     align-items: center;
     padding: 0 60px;
+    overflow: hidden; /* Contains the blur/scale effect */
+    border-radius: 20px; /* Optional: adds a premium look for a fixed-size box */
+}
+
+/* BANNER IMAGE WITH BLUR REVEAL */
+.hero-image::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--hero-bg, url('tt.jpg')) var(--hero-pos, center)/100% 100% no-repeat;
+    z-index: 1;
+    animation: blurReveal 0.8s ease-out forwards;
+}
+
+@keyframes blurReveal {
+    from {
+        filter: blur(20px);
+        transform: scale(1.1);
+    }
+    to {
+        filter: blur(0);
+        transform: scale(1);
+    }
 }
 
 /* DARK OVERLAY */
@@ -434,6 +504,8 @@ body {
     position: absolute;
     inset: 0;
     background: var(--BACKGROUNDCOLOR);
+    z-index: 2; /* Above the background image */
+    opacity: 0.7; /* Allow some image to show through */
 }
 
 /* CONTENT */
@@ -502,7 +574,7 @@ body {
 
 .section-1-terms p,
 .section-1-terms li {
-    color: #555;
+    color: var(--TEXTCOLOR);
     line-height: 1.8;
     margin-top: 10px;
 }
@@ -535,7 +607,7 @@ body {
     }
 
     .section-1-privacy p {
-        color: #555;
+        color: var(--TEXTCOLOR);
         line-height: 1.8;
         margin-top: 10px;
     }
