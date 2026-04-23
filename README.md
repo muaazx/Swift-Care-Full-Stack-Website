@@ -32,7 +32,7 @@ The goal of this project is to demonstrate full-stack development skills by buil
 1. Clone the repository
 
    bash
-   git clone https://github.com/your-username/swiftcare.git
+   git clone https://github.com/muaazx/swiftcare.git
    
 2. Install dependencies
 
